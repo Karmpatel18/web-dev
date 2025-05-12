@@ -37,28 +37,42 @@ interface People {
     name: string,
     age: number,
     greet?: ()  => string,
+    isLegal(): boolean
 }
+
+
 // object field can be a function also 
 // in above People interface greet is a function returning a string 
 
-let people: People = {
-    name: "karm",
-    age: 34, 
-    greet: () => {
-        return "hi"
-    }
-} 
+// let people: People = {
+//     name: "karm",
+//     age: 34, 
+//     greet: () => {
+//         return "hi"
+//     },
+    
+// } 
 
-let greeting = people.greet?.()
-console.log(greeting) 
+// let greeting = people.greet?.()
+// console.log(greeting) 
 
 
 
 class Manager implements People {
-    name: string;
-    age: number;
-    constructor(name: string , age: number){
+    // name: string;
+    // age: number;
+    // to reduce data redundancy
+    constructor(public name: string ,public age: number){
         this.name = name;
         this.age = age;     
-    }
+    };
+    isLegal() {
+        return this.age > 18;
+    };
 }
+
+let person =  new Manager("jhon",34);
+console.log(person.isLegal());
+
+//implementing interfaces ( interfaces vs types )
+//Abstract classes vs interfaces ( interview question )
