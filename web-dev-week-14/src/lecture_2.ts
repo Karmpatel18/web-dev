@@ -138,4 +138,23 @@ const results = (input: enrolledStudent) => {
 
 }
 //it shows all the object fields in log 
-results(result)
+// results(result)
+
+
+//arrays 
+
+function getMax(nums:number[]):any{
+    let maxNum = -100000000;
+    for(let i  = 0; i <= nums.length; i++ ){
+        if (nums[i] > maxNum){
+            maxNum = nums[i];
+        } 
+        
+    }
+    return maxNum
+}
+
+    console.log(getMax([2,3,45,34,23,0]))
+
+
+
