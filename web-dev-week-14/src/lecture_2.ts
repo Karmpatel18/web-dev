@@ -103,3 +103,39 @@ class Employee extends userAbstract{
         return true;
     }
 }
+
+
+// types are similar to interfaces 
+// but they are not implemented as interfaces with classes 
+
+type User = {
+    name:string,
+    id: number
+}
+type Admin = { 
+    name: string,
+    parentName: string,
+}
+
+// types give us unique property of : 
+// 1. union of types "  |  "
+// 2. intersection of types "  &  "
+
+type enrolledStudent = User & Admin ; 
+// using intersection in variable enrolledStudent
+
+
+const result: enrolledStudent = {
+    name: "karm",
+    id: 453,
+    parentName: "karn.p"
+
+}
+// by the use of intersection function can use both the types with all fields 
+
+const results = (input: enrolledStudent) => {
+    console.log(input.name +" "+input.id+" "+ input.parentName)
+
+}
+//it shows all the object fields in log 
+results(result)
