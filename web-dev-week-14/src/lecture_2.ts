@@ -1,3 +1,5 @@
+import { stringify } from "node:querystring"
+
 interface Address {
         city: string,                
         country: string,    
@@ -76,3 +78,28 @@ console.log(person.isLegal());
 
 //implementing interfaces ( interfaces vs types )
 //Abstract classes vs interfaces ( interview question )
+
+abstract class userAbstract {
+    name: string;
+    constructor(name:string){
+        this.name = name ;
+    }
+    hello(){
+        console.log("hi their")
+    }
+    abstract greet(): boolean; 
+}
+
+// in Abstract classes we can use default function 
+// like we use hello() function above , it can't be done in  interfaces
+
+class Employee extends userAbstract{
+    name: string;
+    constructor(name:string){
+        super(name);
+        this.name = name; 
+    }
+    greet(): boolean {
+        return true;
+    }
+}
