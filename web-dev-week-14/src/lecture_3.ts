@@ -75,3 +75,49 @@ const user = new Map();
 user.set(1, { age: 23, address: "akjsd akls jas lkaf "});
 console.log(user)
 console.log(user.has(2))
+
+
+// Exclude 
+
+type userType =  'id' | 'name' | 'password'; 
+type excludedType = Exclude<userType,'name'>;
+function printId(useId: excludedType){
+    return true
+}
+
+// printId('name')
+// 'name' is excluded thus typescript is complaining 
+
+
+
+// type inference with zod 
+import { z } from 'zod';
+import express from "express";
+
+const app = express();
+
+// Define the schema for profile update
+const userProfileSchema = z.object({
+  name: z.string().min(1, { message: "Name cannot be empty" }),
+  email: z.string().email({ message: "Invalid email format" }),
+  age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
+});
+
+
+type UserSchema = z.infer<typeof userProfileSchema>
+
+app.put("/user", (req, res) => {
+  const { success } = userProfileSchema.safeParse(req.body);
+  const updateBody: UserSchema = req.body; // how to assign a type to updateBody?
+
+  if (!success) {
+    res.status(411).json({});
+    return
+  }
+  // update database here
+  res.json({
+    message: "User updated"
+  })
+});
+
+app.listen(3000);
