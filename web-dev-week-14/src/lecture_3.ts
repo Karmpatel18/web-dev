@@ -50,4 +50,28 @@ function updateClient(client: partialProps){
 }
 
 
-updateClient({ age:34, id: "aksjlda", password: "aujsask"})
+// updateClient({ age:34, id: "aksjlda", password: "aujsask"})
+
+
+// Records 
+// records give you more cleaner way to write types of an object 
+
+type Users = Record<string , number>
+const user1: Users = {
+    "karm1" : 45,
+    "ajskdfa" : 43
+}
+
+// <<<<<<   Maps  >>>>>> 
+
+// key - value pair 
+// provides methods like : 
+// 1. set 
+// 2. get 
+// 3. delete
+// 4. has 
+
+const user = new Map();
+user.set(1, { age: 23, address: "akjsd akls jas lkaf "});
+console.log(user)
+console.log(user.has(2))
