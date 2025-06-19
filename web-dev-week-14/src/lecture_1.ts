@@ -1,5 +1,4 @@
 import { setTimeout } from "node:timers";
-
 // number , string , any types 
 let integer: number =  14;
 // console.log(integer);
