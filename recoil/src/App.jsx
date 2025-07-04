@@ -1,4 +1,4 @@
-import { useCounterStore } from "./store/atoms/counter";
+import { useCounterStore } from "./store/counter";
 
 
 function App() {
